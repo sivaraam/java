@@ -10,6 +10,7 @@ import java.io.UnsupportedEncodingException;
 class dss35 {
 	public static void main (String... arg) {
 		try {
+
 				KeyPairGenerator kpg = KeyPairGenerator.getInstance("RSA");
 				KeyPair kp = kpg.genKeyPair();
 				Signature sig = Signature.getInstance("MD5withRSA");
@@ -23,8 +24,8 @@ class dss35 {
 
 				sig.initVerify(kp.getPublic());
 				sig.update(data);
-				System.out.print("\nVerification of the above signature with its public key was ");
-				System.out.println((sig.verify(signatureBytes)) ? "\"successful\"" : "\"NOT successful\"");
+				System.out.print("\nVerification of the above signature with its public key was " + sig.verify(signatureBytes) ? "\"successful\"" : "\"NOT successful\"");
+
 		} catch (NoSuchAlgorithmException | UnsupportedEncodingException | InvalidKeyException | SignatureException e) {
 				e.printStackTrace();
 		}
